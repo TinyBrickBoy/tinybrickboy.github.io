@@ -1,115 +1,641 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="de" class="light">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Leo | tinybrickboy Portfolio</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style>
+        /* Base Styles */
+        :root {
+            --primary: #3b82f6;
+            --secondary: #ef4444;
+            --primary-hover: #2563eb;
+            --secondary-hover: #dc2626;
+            --bg-primary: #f9fafb;
+            --bg-secondary: #ffffff;
+            --bg-tertiary: #eef2ff;
+            --text-primary: #1f2937;
+            --text-secondary: #4b5563;
+            --text-tertiary: #9ca3af;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            --border: #e5e7eb;
+        }
+
+        .dark {
+            --primary: #3b82f6;
+            --secondary: #ef4444;
+            --primary-hover: #60a5fa;
+            --secondary-hover: #f87171;
+            --bg-primary: #111827;
+            --bg-secondary: #1f2937;
+            --bg-tertiary: #0f172a;
+            --text-primary: #f9fafb;
+            --text-secondary: #e5e7eb;
+            --text-tertiary: #9ca3af;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.2), 0 2px 4px -1px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.2), 0 4px 6px -2px rgba(0, 0, 0, 0.1);
+            --border: #374151;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        /* Header */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background-color: var(--bg-secondary);
+            box-shadow: var(--shadow);
+            backdrop-filter: blur(5px);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo span:nth-child(1) {
+            color: var(--primary);
+        }
+
+        .logo span:nth-child(2) {
+            color: var(--secondary);
+        }
+
+        .logo span:nth-child(3) {
+            color: var(--primary);
+        }
+
+        .nav-links {
+            display: none;
+        }
+
+        .nav-links a {
+            margin-left: 2rem;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary);
+        }
+
+        .mobile-menu-button {
+            background: none;
+            border: none;
+            color: var(--text-primary);
+            font-size: 1.25rem;
+            cursor: pointer;
+        }
+
+        .mobile-menu {
+            display: none;
+            padding: 0.5rem 0 1rem;
+        }
+
+        .mobile-menu a {
+            display: block;
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .mobile-menu a:last-child {
+            border-bottom: none;
+        }
+
+        .mobile-menu a:hover {
+            color: var(--secondary);
+        }
+
+        .theme-toggle {
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.5rem;
+            border: 1px solid var(--border);
+            background-color: var(--bg-secondary);
+            color: var(--text-primary);
+            margin-left: 1rem;
+        }
+
+        .theme-icon {
+            font-size: 1rem;
+            margin-right: 0.5rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            background-image: url('/img/holidays/jamboree/korea/28.jpg');
+            background-size: cover;
+            background-position: center;
+            padding: 4rem 0;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: 1;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 600px;
+            background-color: var(--bg-secondary);
+            padding: 2.5rem;
+            border-radius: 1rem;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: 800;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero h1 span {
+            color: var(--secondary);
+        }
+
+        .hero p {
+            font-size: 1.125rem;
+            margin-bottom: 2rem;
+            color: var(--text-secondary);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.5rem;
+            font-weight: 500;
+            border-radius: 0.5rem;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .btn-primary {
+            background-color: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-hover);
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+
+        /* Projects Section */
+        .section {
+            padding: 5rem 0;
+        }
+
+        .section-white {
+            background-color: var(--bg-secondary);
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-title h2 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .section-title p {
+            color: var(--text-secondary);
+            font-size: 1.125rem;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2.5rem;
+        }
+
+        .project-card {
+            background-color: var(--bg-secondary);
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: transform 0.3s, box-shadow 0.3s;
+            border: 1px solid var(--border);
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .project-image {
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .project-image img, 
+        .project-image video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .project-card:hover .project-image img,
+        .project-card:hover .project-image video {
+            transform: scale(1.05);
+        }
+
+        .project-content {
+            padding: 1.5rem;
+        }
+
+        .project-content h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 0.75rem;
+            color: var(--primary);
+        }
+
+        .project-content p {
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+        }
+
+        .tag {
+            background-color: rgba(59, 130, 246, 0.1);
+            color: var(--primary);
+            font-size: 0.75rem;
+            font-weight: 600;
+            padding: 0.375rem 0.75rem;
+            border-radius: 9999px;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .project-links a {
+            color: var(--primary);
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            transition: color 0.3s;
+        }
+
+        .project-links a:hover {
+            color: var(--secondary);
+        }
+
+        .project-links a i {
+            margin-right: 0.5rem;
+        }
+
+        /* Contact Section */
+        .section-gradient {
+            background: linear-gradient(to right, var(--bg-tertiary), var(--bg-primary));
+        }
+
+        .contact-card {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: var(--bg-secondary);
+            border-radius: 1rem;
+            box-shadow: var(--shadow-lg);
+            padding: 2rem;
+            border: 1px solid var(--border);
+        }
+
+        .contact-info {
+            margin-bottom: 2rem;
+        }
+
+        .contact-info h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+        }
+
+        .contact-list {
+            list-style: none;
+        }
+
+        .contact-list li {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+
+        .contact-list li i {
+            color: var(--primary);
+            margin-right: 1rem;
+            font-size: 1.25rem;
+        }
+
+        .social-links {
+            margin-top: 1rem;
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-link {
+            width: 2.5rem;
+            height: 2.5rem;
+            background-color: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+
+        .social-link:hover {
+            background-color: var(--secondary);
+            transform: translateY(-3px);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--bg-tertiary);
+            color: var(--text-primary);
+            padding: 3rem 0;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .footer-logo {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-logo span:nth-child(1),
+        .footer-logo span:nth-child(3) {
+            color: var(--text-primary);
+        }
+
+        .footer-logo span:nth-child(2) {
+            color: var(--secondary);
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-links a:hover {
+            color: var(--secondary);
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-social-link {
+            width: 2.5rem;
+            height: 2.5rem;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--text-primary);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+
+        .footer-social-link:hover {
+            background-color: var(--secondary);
+            transform: translateY(-3px);
+        }
+
+        .copyright {
+            font-size: 0.875rem;
+            opacity: 0.8;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.6s ease-out forwards;
+        }
+
+        /* Media Queries */
+        @media (min-width: 768px) {
+            nav {
+                padding: 1.25rem 0;
+            }
+
+            .nav-links {
+                display: flex;
+            }
+
+            .mobile-menu-button {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+
+            .project-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .project-image {
+                height: 220px;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .hero h1 {
+                font-size: 4rem;
+            }
+
+            .project-image {
+                height: 240px;
+            }
+        }
+    </style>
 </head>
-<body class="bg-gray-50 text-gray-800 font-sans">
+<body>
     <!-- Header -->
-    <header class="sticky top-0 bg-white shadow-md z-50">
-        <div class="container mx-auto px-6 py-4">
-            <nav class="flex justify-between items-center">
-                <a href="#" class="text-2xl font-bold">
-                    <span class="text-blue-600">tiny</span><span class="text-red-500">brick</span><span class="text-blue-600">boy</span>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">
+                    <span>tiny</span><span>brick</span><span>boy</span>
                 </a>
-                <div class="hidden md:flex space-x-8">
-                    <a href="#home" class="font-medium hover:text-red-500 transition-colors duration-300">Home</a>
-                    <a href="#projects" class="font-medium hover:text-red-500 transition-colors duration-300">Projekte</a>
-                    <a href="#contact" class="font-medium hover:text-red-500 transition-colors duration-300">Kontakt</a>
+                <div class="nav-links">
+                    <a href="#home" class="nav-link">Home</a>
+                    <a href="#projects" class="nav-link">Projekte</a>
+                    <a href="#contact" class="nav-link">Kontakt</a>
+                    <div class="theme-toggle" id="theme-toggle">
+                        <span class="theme-icon" id="theme-icon">
+                            <i class="fas fa-moon"></i>
+                        </span>
+                        <span id="theme-text">Dark Mode</span>
+                    </div>
                 </div>
-                <div class="md:hidden">
-                    <button id="mobile-menu-button" class="text-gray-600 hover:text-gray-800">
-                        <i class="fas fa-bars text-xl"></i>
-                    </button>
-                </div>
+                <button class="mobile-menu-button" id="mobile-menu-button">
+                    <i class="fas fa-bars"></i>
+                </button>
             </nav>
             
             <!-- Mobile Menu -->
-            <div id="mobile-menu" class="md:hidden hidden mt-4 pb-4">
-                <a href="#home" class="block py-2 hover:text-red-500 transition-colors duration-300">Home</a>
-                <a href="#projects" class="block py-2 hover:text-red-500 transition-colors duration-300">Projekte</a>
-                <a href="#contact" class="block py-2 hover:text-red-500 transition-colors duration-300">Kontakt</a>
+            <div class="mobile-menu" id="mobile-menu">
+                <a href="#home" class="mobile-nav-link">Home</a>
+                <a href="#projects" class="mobile-nav-link">Projekte</a>
+                <a href="#contact" class="mobile-nav-link">Kontakt</a>
+                <div class="theme-toggle" id="mobile-theme-toggle" style="width: fit-content; margin-top: 10px;">
+                    <span class="theme-icon">
+                        <i class="fas fa-moon"></i>
+                    </span>
+                    <span id="mobile-theme-text">Dark Mode</span>
+                </div>
             </div>
         </div>
     </header>
 
     <!-- Hero Section -->
-<section id="home" class="bg-[url('/img/holidays/jamboree/korea/28.jpg')] bg-cover bg-center min-h-screen flex items-center">
-    <div class="container mx-auto px-6 py-20 bg-white/50 backdrop-blur-md rounded-lg">
-        <div class="max-w-2xl">
-            <h1 class="text-5xl font-bold mb-6">
-                Hey, ich bin <span class="text-red-500">Leo</span>
-            </h1>
-            <p class="text-xl mb-8 text-gray-700">
-                Minecraft-Entwicklung und Netzwerksicherheit sind meine Leidenschaft. 
-                Ich betreibe den Minigames Server onthepixel.net und entwickle 
-                DDoS-Protection Lösungen für Minecraft-Server.
-            </p>
-            <a href="#contact" class="bg-blue-600 hover:bg-red-500 text-white font-medium py-3 px-8 rounded-full inline-block transition-colors duration-300 transform hover:-translate-y-1 hover:shadow-lg">
-                Kontaktiere mich
-            </a>
+    <section id="home" class="hero fade-in">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="fade-in" style="animation-delay: 0.2s;">
+                    Hey, ich bin <span>Leo</span>
+                </h1>
+                <p class="fade-in" style="animation-delay: 0.4s;">
+                    Minecraft-Entwicklung und Netzwerksicherheit sind meine Leidenschaft. 
+                    Ich betreibe den Minigames Server onthepixel.net und entwickle 
+                    DDoS-Protection Lösungen für Minecraft-Server.
+                </p>
+                <a href="#contact" class="btn btn-primary fade-in" style="animation-delay: 0.6s;">
+                    Kontaktiere mich
+                </a>
+            </div>
         </div>
-    </div>
-</section>
-
+    </section>
 
     <!-- Projects Section -->
-    <section id="projects" class="py-20 bg-white">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold mb-4">Meine Projekte</h2>
-                <p class="text-gray-600">Minecraft-Entwicklung und Netzwerksicherheit</p>
+    <section id="projects" class="section section-white fade-in">
+        <div class="container">
+            <div class="section-title">
+                <h2>Meine Projekte</h2>
+                <p>Minecraft-Entwicklung und Netzwerksicherheit</p>
             </div>
             
-            <div class="grid md:grid-cols-2 gap-10">
+            <div class="project-grid">
                 <!-- Project 1: onthepixel.net -->
-                <div class="bg-white rounded-lg shadow-lg overflow-hidden transform transition-transform duration-300 hover:-translate-y-2 hover:shadow-xl">
-                    <div class="h-48 bg-gray-200 overflow-hidden">
-                        <img src="https://onthepixel.net/bg.png" alt="onthepixel.net Minecraft Server" class="w-full h-full object-cover transition-transform duration-500 hover:scale-110">
+                <div class="project-card fade-in" style="animation-delay: 0.2s;">
+                    <div class="project-image">
+                        <img src="https://onthepixel.net/bg.png" alt="onthepixel.net Minecraft Server">
                     </div>
-                    <div class="p-6">
-                        <h3 class="text-2xl font-bold mb-3 text-blue-600">onthepixel.net</h3>
-                        <p class="text-gray-700 mb-4">
+                    <div class="project-content">
+                        <h3>onthepixel.net</h3>
+                        <p>
                             Ein Minecraft Minigames Server mit verschiedenen Spielmodi und einer aktiven Community.
                         </p>
-                        <div class="flex flex-wrap mb-4">
-                            <span class="bg-yellow-200 text-yellow-800 text-xs font-semibold px-3 py-1 rounded-full mr-2 mb-2">Java</span>
-                            <span class="bg-yellow-200 text-yellow-800 text-xs font-semibold px-3 py-1 rounded-full mr-2 mb-2">System Management</span>
-                            <span class="bg-yellow-200 text-yellow-800 text-xs font-semibold px-3 py-1 rounded-full mr-2 mb-2">Nodejs</span>
-                            <span class="bg-yellow-200 text-yellow-800 text-xs font-semibold px-3 py-1 rounded-full mr-2 mb-2">SysManigemt</span>
+                        <div class="project-tags">
+                            <span class="tag">Java</span>
+                            <span class="tag">System Management</span>
+                            <span class="tag">Nodejs</span>
+                            <span class="tag">SysManigemt</span>
                         </div>
-                        <div class="flex space-x-4">
-                            <a href="https://onthepixel.net" class="text-blue-600 font-medium flex items-center hover:text-red-500 transition-colors duration-300">
-                                <i class="fas fa-globe mr-2"></i> Website
+                        <div class="project-links">
+                            <a href="https://onthepixel.net">
+                                <i class="fas fa-globe"></i> Website
                             </a>
                         </div>
                     </div>
                 </div>
 
                 <!-- Project 2: fastasfuck -->
-                <div class="bg-white rounded-lg shadow-lg overflow-hidden transform transition-transform duration-300 hover:-translate-y-2 hover:shadow-xl">
-                    <div class="h-48 bg-gray-200 overflow-hidden">
-                        <video id="bgVideo" autoplay="" muted="" loop="" oncanplay="hideLoading()">
-                            <source src="https://fastasfuck.net/background.mp4" type="video/mp4">
-                                Your browser does not support the video tag.
-                        </video>
+                <div class="project-card fade-in" style="animation-delay: 0.4s;">
+                    <div class="project-image">
+                        <img src="https://images.unsplash.com/photo-1591808216268-ce0b82787efe?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="fastasfuck DDoS Protection">
                     </div>
-                    <div class="p-6">
-                        <h3 class="text-2xl font-bold mb-3 text-blue-600">fastasfuck</h3>
-                        <p class="text-gray-700 mb-4">
+                    <div class="project-content">
+                        <h3>fastasfuck</h3>
+                        <p>
                             Eine spezialisierte DDoS-Protection und Reverse-Proxy-Lösung für Minecraft-Server mit Fokus auf Performance und Sicherheit.
                         </p>
-                        <div class="flex flex-wrap mb-4">
-                            <span class="bg-yellow-200 text-yellow-800 text-xs font-semibold px-3 py-1 rounded-full mr-2 mb-2">System Management</span>
-                            <span class="bg-yellow-200 text-yellow-800 text-xs font-semibold px-3 py-1 rounded-full mr-2 mb-2">Go</span>
-                            <span class="bg-yellow-200 text-yellow-800 text-xs font-semibold px-3 py-1 rounded-full mr-2 mb-2">Support</span>
+                        <div class="project-tags">
+                            <span class="tag">System Management</span>
+                            <span class="tag">Go</span>
+                            <span class="tag">Support</span>
                         </div>
-                        <div class="flex space-x-4">
-                            <a href="https://fastasfuck.net" class="text-blue-600 font-medium flex items-center hover:text-red-500 transition-colors duration-300">
-                                <i class="fas fa-globe mr-2"></i> Website
+                        <div class="project-links">
+                            <a href="https://fastasfuck.net">
+                                <i class="fas fa-globe"></i> Website
                             </a>
                         </div>
                     </div>
@@ -119,36 +645,36 @@
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="py-20 bg-gradient-to-r from-blue-50 to-indigo-50">
-        <div class="container mx-auto px-6">
-            <div class="text-center mb-16">
-                <h2 class="text-4xl font-bold mb-4">Kontakt</h2>
-                <p class="text-gray-600">Lass uns über dein nächstes Projekt sprechen</p>
+    <section id="contact" class="section section-gradient fade-in">
+        <div class="container">
+            <div class="section-title">
+                <h2>Kontakt</h2>
+                <p>Lass uns über dein nächstes Projekt sprechen</p>
             </div>
             
-            <div class="max-w-xl mx-auto bg-white rounded-lg shadow-lg p-8">
-                <div class="mb-8">
-                    <h3 class="text-2xl font-bold mb-6 text-blue-600">Kontaktinformationen</h3>
-                    <ul class="space-y-4">
-                        <li class="flex items-center">
-                            <i class="fas fa-envelope text-blue-600 mr-4"></i>
+            <div class="contact-card fade-in" style="animation-delay: 0.2s;">
+                <div class="contact-info">
+                    <h3>Kontaktinformationen</h3>
+                    <ul class="contact-list">
+                        <li>
+                            <i class="fas fa-envelope"></i>
                             <span>hello@tinybrickboy.com</span>
                         </li>
                     </ul>
                 </div>
                 
-                <h3 class="text-2xl font-bold mb-4 text-blue-600">Folge mir</h3>
-                <div class="flex space-x-4">
-                    <a href="#" class="bg-blue-600 text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-red-500 transition-colors duration-300 transform hover:-translate-y-1">
+                <h3>Folge mir</h3>
+                <div class="social-links">
+                    <a href="#" class="social-link">
                         <i class="fab fa-github"></i>
                     </a>
-                    <a href="#" class="bg-blue-600 text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-red-500 transition-colors duration-300 transform hover:-translate-y-1">
+                    <a href="#" class="social-link">
                         <i class="fab fa-twitter"></i>
                     </a>
-                    <a href="#" class="bg-blue-600 text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-red-500 transition-colors duration-300 transform hover:-translate-y-1">
+                    <a href="#" class="social-link">
                         <i class="fab fa-linkedin-in"></i>
                     </a>
-                    <a href="#" class="bg-blue-600 text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-red-500 transition-colors duration-300 transform hover:-translate-y-1">
+                    <a href="#" class="social-link">
                         <i class="fab fa-instagram"></i>
                     </a>
                 </div>
@@ -157,32 +683,32 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-10">
-        <div class="container mx-auto px-6">
-            <div class="flex flex-col items-center">
-                <div class="text-3xl font-bold mb-6">
-                    <span class="text-white">tiny</span><span class="text-red-500">brick</span><span class="text-white">boy</span>
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <span>tiny</span><span>brick</span><span>boy</span>
                 </div>
-                <div class="flex space-x-8 mb-6">
-                    <a href="#home" class="hover:text-red-500 transition-colors duration-300">Home</a>
-                    <a href="#projects" class="hover:text-red-500 transition-colors duration-300">Projekte</a>
-                    <a href="#contact" class="hover:text-red-500 transition-colors duration-300">Kontakt</a>
+                <div class="footer-links">
+                    <a href="#home">Home</a>
+                    <a href="#projects">Projekte</a>
+                    <a href="#contact">Kontakt</a>
                 </div>
-                <div class="flex space-x-4 mb-6">
-                    <a href="#" class="bg-gray-700 text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-red-500 transition-colors duration-300">
+                <div class="footer-social">
+                    <a href="#" class="footer-social-link">
                         <i class="fab fa-github"></i>
                     </a>
-                    <a href="#" class="bg-gray-700 text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-red-500 transition-colors duration-300">
+                    <a href="#" class="footer-social-link">
                         <i class="fab fa-twitter"></i>
                     </a>
-                    <a href="#" class="bg-gray-700 text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-red-500 transition-colors duration-300">
+                    <a href="#" class="footer-social-link">
                         <i class="fab fa-linkedin-in"></i>
                     </a>
-                    <a href="#" class="bg-gray-700 text-white w-10 h-10 rounded-full flex items-center justify-center hover:bg-red-500 transition-colors duration-300">
+                    <a href="#" class="footer-social-link">
                         <i class="fab fa-instagram"></i>
                     </a>
                 </div>
-                <div class="text-sm opacity-80">
+                <div class="copyright">
                     &copy; 2025 tinybrickboy. Alle Rechte vorbehalten.
                 </div>
             </div>
@@ -195,14 +721,14 @@
         const mobileMenu = document.getElementById('mobile-menu');
         
         mobileMenuButton.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
+            mobileMenu.style.display = mobileMenu.style.display === 'block' ? 'none' : 'block';
         });
         
         // Close mobile menu when clicking a link
-        const mobileLinks = mobileMenu.querySelectorAll('a');
+        const mobileLinks = document.querySelectorAll('.mobile-nav-link');
         mobileLinks.forEach(link => {
             link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
+                mobileMenu.style.display = 'none';
             });
         });
         
@@ -221,6 +747,70 @@
                     });
                 }
             });
+        });
+
+        // Theme toggling
+        const themeToggle = document.getElementById('theme-toggle');
+        const mobileThemeToggle = document.getElementById('mobile-theme-toggle');
+        const themeIcon = document.getElementById('theme-icon');
+        const themeText = document.getElementById('theme-text');
+        const mobileThemeText = document.getElementById('mobile-theme-text');
+        const html = document.documentElement;
+
+        function updateThemeUI(isDark) {
+            const icons = document.querySelectorAll('.theme-icon i');
+            icons.forEach(icon => {
+                icon.className = isDark ? 'fas fa-sun' : 'fas fa-moon';
+            });
+            
+            themeText.textContent = isDark ? 'Light Mode' : 'Dark Mode';
+            mobileThemeText.textContent = isDark ? 'Light Mode' : 'Dark Mode';
+        }
+
+        function toggleTheme() {
+            if (html.classList.contains('dark')) {
+                html.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+                updateThemeUI(false);
+            } else {
+                html.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+                updateThemeUI(true);
+            }
+        }
+
+        // Check for saved theme preference
+        const savedTheme = localStorage.getItem('theme');
+        if (savedTheme === 'dark') {
+            html.classList.add('dark');
+            updateThemeUI(true);
+        } else {
+            updateThemeUI(false);
+        }
+
+        themeToggle.addEventListener('click', toggleTheme);
+        mobileThemeToggle.addEventListener('click', toggleTheme);
+
+        // Animation on scroll
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = 1;
+                    entry.target.style.transform = 'translateY(0)';
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(element => {
+            element.style.opacity = 0;
+            element.style.transform = 'translateY(20px)';
+            element.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+            observer.observe(element);
         });
     </script>
 </body>
