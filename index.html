@@ -1,9 +1,16 @@
 <!DOCTYPE html>
-<html lang="de" class="light">
+<html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Leo | tinybrickboy</title>
+    <script>
+        (function() {
+            var saved = localStorage.getItem('theme');
+            var dark = saved ? saved === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
+            document.documentElement.classList.add(dark ? 'dark' : 'light');
+        })();
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
@@ -105,8 +112,7 @@
             font-weight: 800;
             letter-spacing: -0.03em;
         }
-        .logo-tiny, .logo-boy { color: var(--primary); }
-        .logo-brick { color: var(--secondary); }
+        .logo-tiny, .logo-brick, .logo-boy { color: var(--text-primary); }
 
         .nav-right { display: flex; align-items: center; gap: 0.25rem; }
 
@@ -532,8 +538,7 @@
         }
 
         .footer-logo { font-size: 1.375rem; font-weight: 800; letter-spacing: -0.03em; }
-        .footer-logo .logo-tiny, .footer-logo .logo-boy { color: var(--text-primary); transition: color 0.35s ease; }
-        .footer-logo .logo-brick { color: var(--secondary); }
+        .footer-logo .logo-tiny, .footer-logo .logo-brick, .footer-logo .logo-boy { color: var(--text-primary); transition: color 0.35s ease; }
 
         .footer-nav { display: flex; gap: 1.75rem; }
         .footer-nav a { font-size: 0.875rem; color: var(--text-secondary); transition: color 0.2s; }
@@ -709,13 +714,7 @@
                                 <a href="https://github.com/tinybrickboy" class="social-link" title="GitHub">
                                     <i class="fab fa-github"></i>
                                 </a>
-                                <a href="#" class="social-link" title="Twitter / X">
-                                    <i class="fab fa-twitter"></i>
-                                </a>
-                                <a href="#" class="social-link" title="LinkedIn">
-                                    <i class="fab fa-linkedin-in"></i>
-                                </a>
-                                <a href="#" class="social-link" title="Instagram">
+                                <a href="https://www.instagram.com/tinybrickboy" class="social-link" title="Instagram">
                                     <i class="fab fa-instagram"></i>
                                 </a>
                             </div>
@@ -762,7 +761,13 @@
             themeIcon.className = dark ? 'fas fa-sun' : 'fas fa-moon';
         }
 
-        applyTheme(localStorage.getItem('theme') === 'dark');
+        var saved = localStorage.getItem('theme');
+        applyTheme(saved ? saved === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches);
+
+        // Folgt OS-Einstellung live, solange der User nichts manuell gesetzt hat
+        window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
+            if (!localStorage.getItem('theme')) applyTheme(e.matches);
+        });
 
         themeToggle.addEventListener('click', () => {
             const isDark = html.classList.contains('dark');
