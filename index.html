@@ -213,16 +213,8 @@
             height: 4.25rem;
         }
         .logo {
-            display: inline-flex; align-items: center; gap: 0.55rem;
+            display: inline-flex; align-items: center;
             font-size: 1.05rem; font-weight: 800; letter-spacing: -0.02em;
-        }
-        .logo-mark {
-            width: 1.875rem; height: 1.875rem;
-            border-radius: 0.5rem;
-            background: var(--grad-primary);
-            display: grid; place-items: center;
-            color: #fff; font-size: 0.7rem; font-weight: 800;
-            box-shadow: 0 4px 12px -2px rgba(99,102,241,0.5);
         }
         .logo-text .l-tiny { color: var(--text-2); }
         .logo-text .l-brick { color: var(--text); }
@@ -375,37 +367,6 @@
             z-index: 2;
             max-width: 760px;
         }
-        .hero-eyebrow {
-            display: inline-flex; align-items: center; gap: 0.55rem;
-            padding: 0.4rem 0.85rem;
-            background: var(--surface);
-            border: 1px solid var(--border);
-            border-radius: 9999px;
-            font-size: 0.78rem; font-weight: 600;
-            color: var(--text-2);
-            margin-bottom: 1.5rem;
-            box-shadow: var(--shadow-sm);
-        }
-        .hero-eyebrow .pulse {
-            position: relative;
-            width: 8px; height: 8px;
-            border-radius: 50%;
-            background: var(--ok);
-        }
-        .hero-eyebrow .pulse::after {
-            content: '';
-            position: absolute; inset: -4px;
-            border-radius: 50%;
-            background: var(--ok);
-            opacity: 0.4;
-            animation: ping 2s cubic-bezier(0,0,0.2,1) infinite;
-        }
-        @keyframes ping {
-            0%   { transform: scale(0.8); opacity: 0.5; }
-            80%  { transform: scale(1.8); opacity: 0; }
-            100% { transform: scale(1.8); opacity: 0; }
-        }
-
         .hero h1 {
             font-size: clamp(2.75rem, 8vw, 5.5rem);
             font-weight: 900;
@@ -625,20 +586,6 @@
             position: absolute; inset: 0;
             background: linear-gradient(to top, rgba(7,11,24,0.55) 0%, transparent 55%);
         }
-        .project-badge {
-            position: absolute;
-            top: 1rem; left: 1rem;
-            padding: 0.35rem 0.7rem;
-            font-size: 0.72rem; font-weight: 600;
-            background: rgba(255,255,255,0.85);
-            color: var(--text);
-            border-radius: 9999px;
-            backdrop-filter: blur(8px);
-            display: inline-flex; align-items: center; gap: 0.4rem;
-        }
-        .dark .project-badge { background: rgba(13,19,38,0.78); color: #fff; border: 1px solid rgba(255,255,255,0.1); }
-        .project-badge .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--ok); }
-
         .project-body {
             padding: 1.75rem;
             flex: 1; display: flex; flex-direction: column;
@@ -830,7 +777,6 @@
         <div class="container">
             <nav class="nav" aria-label="Hauptnavigation">
                 <a href="#home" class="logo" aria-label="tinybrickboy – Startseite">
-                    <span class="logo-mark" aria-hidden="true">tb</span>
                     <span class="logo-text"><span class="l-tiny">tiny</span><span class="l-brick">brick</span><span class="l-boy">boy</span></span>
                 </a>
                 <div class="nav-right">
@@ -867,10 +813,6 @@
             </div>
             <div class="container">
                 <div class="hero-content">
-                    <span class="hero-eyebrow">
-                        <span class="pulse" aria-hidden="true"></span>
-                        Verfügbar für Projekte
-                    </span>
                     <h1>Hey, ich bin<br><span class="name">Leo.</span></h1>
                     <p>
                         Minecraft-Entwicklung und Netzwerksicherheit sind meine Leidenschaft.
@@ -943,7 +885,6 @@
                     <article class="project reveal reveal-d1">
                         <div class="project-media">
                             <img src="https://onthepixel.net/bg.png" alt="onthepixel.net Minecraft Server" loading="lazy" decoding="async">
-                            <span class="project-badge"><span class="dot" aria-hidden="true"></span> Live</span>
                         </div>
                         <div class="project-body">
                             <h3>onthepixel.net</h3>
@@ -963,7 +904,6 @@
                     <article class="project project--warm reveal reveal-d2">
                         <div class="project-media">
                             <img src="https://images.unsplash.com/photo-1591808216268-ce0b82787efe?ixlib=rb-1.2.1&auto=format&fit=crop&w=900&q=80" alt="fastasfuck DDoS Protection" loading="lazy" decoding="async">
-                            <span class="project-badge"><span class="dot" aria-hidden="true"></span> Live</span>
                         </div>
                         <div class="project-body">
                             <h3>fastasfuck</h3>
@@ -1026,7 +966,6 @@
         <div class="container">
             <div class="footer-inner">
                 <div class="footer-logo">
-                    <span class="logo-mark" aria-hidden="true">tb</span>
                     <span class="logo-text"><span class="l-tiny">tiny</span><span class="l-brick">brick</span><span class="l-boy">boy</span></span>
                 </div>
                 <nav class="footer-nav" aria-label="Footer-Navigation">
