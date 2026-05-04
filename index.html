@@ -3,28 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Leo | tinybrickboy – Minecraft & Netzwerksicherheit</title>
-    <meta name="description" content="Leo (tinybrickboy) – Minecraft-Entwicklung und DDoS-Protection. Betreiber von onthepixel.net und Entwickler von fastasfuck, einer Reverse-Proxy-Lösung für Minecraft-Server.">
-    <meta name="author" content="Leo (tinybrickboy)">
-    <meta name="theme-color" content="#0f172a" media="(prefers-color-scheme: dark)">
-    <meta name="theme-color" content="#f8fafc" media="(prefers-color-scheme: light)">
-    <link rel="canonical" href="https://tinybrickboy.de/">
-
-    <!-- Open Graph -->
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="Leo | tinybrickboy">
-    <meta property="og:description" content="Minecraft-Entwicklung und Netzwerksicherheit. onthepixel.net & fastasfuck.">
-    <meta property="og:url" content="https://tinybrickboy.de/">
-    <meta property="og:locale" content="de_DE">
-
-    <!-- Twitter -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Leo | tinybrickboy">
-    <meta name="twitter:description" content="Minecraft-Entwicklung und Netzwerksicherheit. onthepixel.net & fastasfuck.">
-
-    <!-- Favicon (inline SVG) -->
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' x2='1' y1='0' y2='1'%3E%3Cstop offset='0' stop-color='%233b82f6'/%3E%3Cstop offset='1' stop-color='%237c3aed'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='14' fill='url(%23g)'/%3E%3Ctext x='50%25' y='54%25' font-family='Inter,Arial,sans-serif' font-size='38' font-weight='800' fill='white' text-anchor='middle' dominant-baseline='middle'%3Etb%3C/text%3E%3C/svg%3E">
-
+    <title>Leo | tinybrickboy</title>
     <script>
         (function() {
             var saved = localStorage.getItem('theme');
@@ -90,27 +69,6 @@
 
         a { text-decoration: none; color: inherit; }
         img, video { display: block; max-width: 100%; }
-
-        /* Keyboard focus */
-        :focus-visible {
-            outline: 2px solid var(--primary);
-            outline-offset: 3px;
-            border-radius: 4px;
-        }
-
-        /* Skip link */
-        .skip-link {
-            position: absolute;
-            top: -40px; left: 1rem;
-            background: var(--primary);
-            color: #fff;
-            padding: 0.5rem 0.875rem;
-            border-radius: 0.5rem;
-            font-size: 0.875rem; font-weight: 600;
-            z-index: 200;
-            transition: top 0.2s ease;
-        }
-        .skip-link:focus { top: 0.75rem; }
 
         .container {
             width: 100%;
@@ -334,63 +292,6 @@
 
         /* ===== Sections ===== */
         .section { padding: 6rem 0; }
-
-        /* About / Stats */
-        .section-about {
-            background-color: var(--bg-primary);
-            transition: background-color 0.35s ease;
-        }
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1rem;
-            max-width: 880px;
-            margin: 0 auto;
-        }
-        .stat-card {
-            background-color: var(--bg-secondary);
-            border: 1px solid var(--border);
-            border-radius: var(--radius-lg);
-            padding: 1.5rem 1.25rem;
-            text-align: center;
-            box-shadow: var(--shadow);
-            transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease, background-color 0.35s ease;
-        }
-        .stat-card:hover {
-            transform: translateY(-4px);
-            border-color: rgba(59,130,246,0.25);
-            box-shadow: var(--shadow-lg);
-        }
-        .stat-icon {
-            display: inline-flex; align-items: center; justify-content: center;
-            width: 2.5rem; height: 2.5rem;
-            border-radius: 0.625rem;
-            background: linear-gradient(135deg, rgba(59,130,246,0.12), rgba(124,58,237,0.12));
-            color: var(--primary);
-            font-size: 1rem;
-            margin-bottom: 0.875rem;
-        }
-        .stat-value {
-            font-size: clamp(1.5rem, 3.5vw, 2rem);
-            font-weight: 800;
-            letter-spacing: -0.02em;
-            background: linear-gradient(135deg, var(--primary), var(--accent));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            line-height: 1.1;
-        }
-        .stat-label {
-            font-size: 0.78rem; font-weight: 600;
-            text-transform: uppercase; letter-spacing: 0.08em;
-            color: var(--text-secondary);
-            margin-top: 0.5rem;
-            transition: color 0.35s ease;
-        }
-        @media (min-width: 640px) {
-            .stats-grid { grid-template-columns: repeat(4, 1fr); gap: 1.25rem; }
-            .stat-card { padding: 1.75rem 1.25rem; }
-        }
 
         /* Projects: subtle dot-grid texture */
         .section-projects {
@@ -661,42 +562,29 @@
             .project-grid { grid-template-columns: repeat(2, 1fr); }
             .project-image { height: 250px; }
         }
-
-        /* ===== Reduced motion ===== */
-        @media (prefers-reduced-motion: reduce) {
-            *, *::before, *::after {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
-                scroll-behavior: auto !important;
-            }
-            .reveal { opacity: 1; transform: none; }
-            .scroll-indicator { animation: none; }
-        }
     </style>
 </head>
 <body>
-    <a href="#main" class="skip-link">Zum Inhalt springen</a>
-    <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
+    <div class="scroll-progress" id="scrollProgress"></div>
 
     <!-- Header -->
     <header class="header">
         <div class="container">
-            <nav class="nav" aria-label="Hauptnavigation">
-                <a href="#home" class="logo" aria-label="tinybrickboy – Startseite">
+            <nav class="nav">
+                <a href="#home" class="logo">
                     <span class="logo-tiny">tiny</span><span class="logo-brick">brick</span><span class="logo-boy">boy</span>
                 </a>
                 <div class="nav-right">
                     <div class="nav-links" id="navLinks">
-                        <a href="#home" class="nav-link active" aria-current="page">Home</a>
+                        <a href="#home" class="nav-link active">Home</a>
                         <a href="#projects" class="nav-link">Projekte</a>
                         <a href="#contact" class="nav-link">Kontakt</a>
                     </div>
-                    <button class="icon-btn" id="themeToggle" type="button" aria-label="Theme wechseln" title="Theme wechseln">
-                        <i class="fas fa-moon" id="themeIcon" aria-hidden="true"></i>
+                    <button class="icon-btn" id="themeToggle" title="Theme wechseln">
+                        <i class="fas fa-moon" id="themeIcon"></i>
                     </button>
-                    <button class="icon-btn mobile-menu-btn" id="mobileMenuBtn" type="button" aria-label="Menü öffnen" aria-expanded="false" aria-controls="mobileMenu">
-                        <i class="fas fa-bars" id="mobileMenuIcon" aria-hidden="true"></i>
+                    <button class="icon-btn mobile-menu-btn" id="mobileMenuBtn">
+                        <i class="fas fa-bars" id="mobileMenuIcon"></i>
                     </button>
                 </div>
             </nav>
@@ -707,8 +595,6 @@
             </div>
         </div>
     </header>
-
-    <main id="main">
 
     <!-- Hero -->
     <section id="home" class="hero">
@@ -733,41 +619,8 @@
                 </div>
             </div>
         </div>
-        <div class="scroll-indicator" aria-hidden="true">
+        <div class="scroll-indicator">
             <i class="fas fa-chevron-down"></i>
-        </div>
-    </section>
-
-    <!-- Stats / About -->
-    <section id="about" class="section section-about" aria-label="Über mich">
-        <div class="container">
-            <div class="section-header reveal">
-                <div class="section-label">Über mich</div>
-                <h2>Was ich mache</h2>
-                <p>Server, Code und ein bisschen Netzwerk-Magie</p>
-            </div>
-            <div class="stats-grid">
-                <div class="stat-card reveal">
-                    <div class="stat-icon" aria-hidden="true"><i class="fas fa-server"></i></div>
-                    <div class="stat-value">24/7</div>
-                    <div class="stat-label">Server Uptime</div>
-                </div>
-                <div class="stat-card reveal reveal-d1">
-                    <div class="stat-icon" aria-hidden="true"><i class="fas fa-shield-halved"></i></div>
-                    <div class="stat-value">DDoS</div>
-                    <div class="stat-label">Protection</div>
-                </div>
-                <div class="stat-card reveal reveal-d1">
-                    <div class="stat-icon" aria-hidden="true"><i class="fas fa-code"></i></div>
-                    <div class="stat-value">5+</div>
-                    <div class="stat-label">Jahre Erfahrung</div>
-                </div>
-                <div class="stat-card reveal reveal-d2">
-                    <div class="stat-icon" aria-hidden="true"><i class="fas fa-cube"></i></div>
-                    <div class="stat-value">2</div>
-                    <div class="stat-label">Aktive Projekte</div>
-                </div>
-            </div>
         </div>
     </section>
 
@@ -783,7 +636,7 @@
                 <div class="project-card reveal reveal-d1">
                     <div class="project-accent"></div>
                     <div class="project-image">
-                        <img src="https://onthepixel.net/bg.png" alt="onthepixel.net Minecraft Server" loading="lazy" decoding="async">
+                        <img src="https://onthepixel.net/bg.png" alt="onthepixel.net Minecraft Server">
                     </div>
                     <div class="project-body">
                         <h3>onthepixel.net</h3>
@@ -794,10 +647,10 @@
                             <span class="tag">Node.js</span>
                         </div>
                         <div class="project-footer">
-                            <a href="https://onthepixel.net" class="project-link" target="_blank" rel="noopener noreferrer">
-                                <i class="fas fa-globe" aria-hidden="true"></i>
+                            <a href="https://onthepixel.net" class="project-link">
+                                <i class="fas fa-globe"></i>
                                 Website besuchen
-                                <i class="fas fa-arrow-right arrow" aria-hidden="true"></i>
+                                <i class="fas fa-arrow-right arrow"></i>
                             </a>
                         </div>
                     </div>
@@ -806,7 +659,7 @@
                 <div class="project-card reveal reveal-d2">
                     <div class="project-accent"></div>
                     <div class="project-image">
-                        <img src="https://images.unsplash.com/photo-1591808216268-ce0b82787efe?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="fastasfuck DDoS Protection" loading="lazy" decoding="async">
+                        <img src="https://images.unsplash.com/photo-1591808216268-ce0b82787efe?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="fastasfuck DDoS Protection">
                     </div>
                     <div class="project-body">
                         <h3>fastasfuck</h3>
@@ -841,15 +694,15 @@
                 <div class="contact-card">
                     <div class="contact-accent"></div>
                     <div class="contact-body">
-                        <a href="mailto:hello@tinybrickboy.de" class="contact-item">
-                            <div class="contact-icon" aria-hidden="true"><i class="fas fa-envelope"></i></div>
+                        <div class="contact-item">
+                            <div class="contact-icon"><i class="fas fa-envelope"></i></div>
                             <div class="contact-meta">
                                 <span class="contact-label">E-Mail</span>
                                 <span class="contact-value">hello@tinybrickboy.de</span>
                             </div>
-                        </a>
-                        <a href="https://discordapp.com/users/860985894436601857/" class="contact-item" target="_blank" rel="noopener noreferrer">
-                            <div class="contact-icon" aria-hidden="true"><i class="fa-brands fa-discord"></i></div>
+                        </div>
+                        <a href="https://discordapp.com/users/860985894436601857/" class="contact-item">
+                            <div class="contact-icon"><i class="fa-brands fa-discord"></i></div>
                             <div class="contact-meta">
                                 <span class="contact-label">Discord</span>
                                 <span class="contact-value">TinyBrickBoy</span>
@@ -858,11 +711,11 @@
                         <div class="social-section">
                             <div class="social-label">Social Media</div>
                             <div class="social-row">
-                                <a href="https://github.com/tinybrickboy" class="social-link" title="GitHub" aria-label="GitHub" target="_blank" rel="noopener noreferrer">
-                                    <i class="fab fa-github" aria-hidden="true"></i>
+                                <a href="https://github.com/tinybrickboy" class="social-link" title="GitHub">
+                                    <i class="fab fa-github"></i>
                                 </a>
-                                <a href="https://www.instagram.com/tinybrickboy" class="social-link" title="Instagram" aria-label="Instagram" target="_blank" rel="noopener noreferrer">
-                                    <i class="fab fa-instagram" aria-hidden="true"></i>
+                                <a href="https://www.instagram.com/tinybrickboy" class="social-link" title="Instagram">
+                                    <i class="fab fa-instagram"></i>
                                 </a>
                             </div>
                         </div>
@@ -872,8 +725,6 @@
         </div>
     </section>
 
-    </main>
-
     <!-- Footer -->
     <footer>
         <div class="container">
@@ -881,13 +732,12 @@
                 <div class="footer-logo">
                     <span class="logo-tiny">tiny</span><span class="logo-brick">brick</span><span class="logo-boy">boy</span>
                 </div>
-                <nav class="footer-nav" aria-label="Footer-Navigation">
+                <nav class="footer-nav">
                     <a href="#home">Home</a>
-                    <a href="#about">Über mich</a>
                     <a href="#projects">Projekte</a>
                     <a href="#contact">Kontakt</a>
                 </nav>
-                <p class="footer-copy">&copy; <span id="footerYear">2026</span> tinybrickboy. Alle Rechte vorbehalten.</p>
+                <p class="footer-copy">&copy; 2026 tinybrickboy. Alle Rechte vorbehalten.</p>
             </div>
         </div>
     </footer>
@@ -909,8 +759,6 @@
             html.classList.toggle('dark', dark);
             html.classList.toggle('light', !dark);
             themeIcon.className = dark ? 'fas fa-sun' : 'fas fa-moon';
-            themeToggle.setAttribute('aria-label', dark ? 'Zu hellem Theme wechseln' : 'Zu dunklem Theme wechseln');
-            themeToggle.setAttribute('aria-pressed', String(dark));
         }
 
         var saved = localStorage.getItem('theme');
@@ -932,22 +780,16 @@
         const mobileMenu = document.getElementById('mobileMenu');
         const mobileMenuIcon = document.getElementById('mobileMenuIcon');
 
-        function setMenu(open) {
-            mobileMenu.classList.toggle('open', open);
+        mobileMenuBtn.addEventListener('click', () => {
+            const open = mobileMenu.classList.toggle('open');
             mobileMenuIcon.className = open ? 'fas fa-times' : 'fas fa-bars';
-            mobileMenuBtn.setAttribute('aria-expanded', String(open));
-            mobileMenuBtn.setAttribute('aria-label', open ? 'Menü schließen' : 'Menü öffnen');
-        }
-        mobileMenuBtn.addEventListener('click', () => setMenu(!mobileMenu.classList.contains('open')));
+        });
         mobileMenu.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => setMenu(false));
+            link.addEventListener('click', () => {
+                mobileMenu.classList.remove('open');
+                mobileMenuIcon.className = 'fas fa-bars';
+            });
         });
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && mobileMenu.classList.contains('open')) setMenu(false);
-        });
-
-        // Footer year
-        document.getElementById('footerYear').textContent = new Date().getFullYear();
 
         // Smooth scroll
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
